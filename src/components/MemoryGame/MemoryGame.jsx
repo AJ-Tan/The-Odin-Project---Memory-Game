@@ -31,18 +31,19 @@ function MemoryGame({ gameStatus, setGameStatus }) {
   }, []);
 
   const handleCardSelection = (id) => {
-    console.log(gameStatus.selectedIds);
     if (gameStatus.selectedIds.includes(id)) {
       setGameStatus((prev) => ({
+        ...prev,
         score: 0,
-        bestScore: prev.score > prev.bestScore ? prev.score : prev.bestScore,
         selectedIds: [],
       }));
       initializeCards();
     } else {
+      const updatedScore = gameStatus.score + 1;
       setGameStatus((prev) => ({
-        ...prev,
-        score: prev.score + 1,
+        score: updatedScore,
+        bestScore:
+          updatedScore > prev.bestScore ? updatedScore : prev.bestScore,
         selectedIds: [...prev.selectedIds, id],
       }));
       randomizeCards();
