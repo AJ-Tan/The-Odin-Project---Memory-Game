@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import MemoryCard from "./MemoryCard";
 import "./css/memoryGame.css";
 
 function MemoryGame({ gameStatus, setGameStatus }) {
   const [memoryList, setMemoryList] = useState(null);
-  const ref = useRef(false);
 
   const initializeCards = () => {
     setMemoryList(null);
@@ -26,11 +25,6 @@ function MemoryGame({ gameStatus, setGameStatus }) {
   };
 
   useEffect(() => {
-    if (!ref.current) {
-      ref.current = true;
-      return;
-    }
-
     randomMemoryPokemon().then((res) => {
       setMemoryList(res);
     });
