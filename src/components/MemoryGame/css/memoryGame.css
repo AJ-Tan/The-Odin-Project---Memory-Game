@@ -1,0 +1,7 @@
+.memory-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 14rem);
+  justify-content: space-between;
+  padding: 1rem;
+  gap: 1rem;
+}
